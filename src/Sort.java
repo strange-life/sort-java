@@ -6,9 +6,11 @@ public abstract class Sort<T extends Comparable<T>> {
     }
 
     protected boolean isSorted(T[] a) {
-        for (int i = 1; i < a.length; i++)
-            if (less(a[i], a[i - 1]))
+        for (int i = 1; i < a.length; i++) {
+            if (less(a[i], a[i - 1])) {
                 return false;
+            }
+        }
 
         return true;
     }
@@ -20,7 +22,8 @@ public abstract class Sort<T extends Comparable<T>> {
     }
 
     protected void show(T[] a) {
-        for (T item : a)
+        for (T item : a) {
             StdOut.println(item);
+        }
     }
 }
