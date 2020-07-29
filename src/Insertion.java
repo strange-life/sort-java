@@ -1,6 +1,7 @@
 import edu.princeton.cs.algs4.StdRandom;
 
 public class Insertion<T extends Comparable<T>> extends Sort<T> {
+    // TODO 用二分查找继续优化
     public void sort(T[] a) {
         int min = 0;
         for (int i = 1; i < a.length; i++) {
@@ -11,9 +12,15 @@ public class Insertion<T extends Comparable<T>> extends Sort<T> {
         exch(a, 0, min);
 
         for (int i = 1; i < a.length; i++) {
-            for (int j = i; less(a[j], a[j - 1]); j--) {
-                exch(a, j, j - 1);
+            int j = i;
+            T temp = a[j];
+
+            while (less(temp, a[j - 1])) {
+                a[j] = a[j - 1];
+                j--;
             }
+
+            a[j] = temp;
         }
     }
 
