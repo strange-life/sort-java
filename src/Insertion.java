@@ -12,14 +12,14 @@ public class Insertion<T extends Comparable<T>> extends Sort<T> {
         exch(a, 0, min);
 
         for (int i = 1; i < a.length; i++) {
-            int j = i;
-            T temp = a[j];
+            T temp = a[i];
 
+            int j = i;
             while (less(temp, a[j - 1])) {
-                a[j] = a[j - 1];
                 j--;
             }
 
+            System.arraycopy(a, j, a, j + 1, i - j);
             a[j] = temp;
         }
     }
