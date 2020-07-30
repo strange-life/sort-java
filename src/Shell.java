@@ -7,14 +7,20 @@ public class Shell<T extends Comparable<T>> extends Sort<T> {
             h = 3 * h + 1;
         }
 
-        for (; h >= 1; h /= 3) {
+        while (h >= 1) {
             for (int i = h; i < a.length; i++) {
-                for (int j = i; j >= h; j -= h) {
-                    if (less(a[j], a[j - h])) {
-                        exch(a, j, j - h);
-                    }
+                T temp = a[i];
+
+                int j = i;
+                while (j >= h && less(temp, a[j - h])) {
+                    a[j] = a[j - h];
+                    j -= h;
                 }
+
+                a[j] = temp;
             }
+
+            h /= 3;
         }
     }
 

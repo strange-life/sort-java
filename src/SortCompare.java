@@ -16,6 +16,11 @@ public class SortCompare {
             selection.sort(a);
         }
 
+        if (alg.equals("Shell")) {
+            Shell<Double> shell = new Shell<>();
+            shell.sort(a);
+        }
+
         return timer.elapsedTime();
     }
 
